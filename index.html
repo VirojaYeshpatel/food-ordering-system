@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Ordering System</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <h1>Food Ordering System</h1>
+        <button id="theme-toggle" class="btn btn-secondary" aria-label="Toggle dark mode">
+          🌙 Dark mode
+        </button>
+      </header>
+
+      <main class="grid">
+        <section class="panel">
+          <h2>Create Order</h2>
+          <form id="order-form" novalidate>
+            <label for="customer-name">Customer name</label>
+            <input id="customer-name" name="customerName" required minlength="2" placeholder="e.g. Alex" />
+
+            <label for="order-item">Item</label>
+            <select id="order-item" name="item" required>
+              <option value="">Select item</option>
+              <option value="Margherita Pizza">Margherita Pizza</option>
+              <option value="Veggie Burger">Veggie Burger</option>
+              <option value="Chicken Bowl">Chicken Bowl</option>
+              <option value="Caesar Salad">Caesar Salad</option>
+            </select>
+
+            <label for="quantity">Quantity</label>
+            <input id="quantity" name="quantity" type="number" min="1" max="10" value="1" required />
+
+            <button id="submit-btn" class="btn btn-primary" type="submit">Place Order</button>
+          </form>
+          <p id="message" class="message" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="panel">
+          <h2>Order Status Tracking</h2>
+          <div id="loading" class="loading hidden">
+            <span class="spinner" aria-hidden="true"></span>
+            <span>Updating order status...</span>
+          </div>
+          <ul id="orders" class="orders-list"></ul>
+        </section>
+      </main>
+    </div>
+
+    <template id="order-template">
+      <li class="order-card">
+        <div>
+          <h3 class="order-title"></h3>
+          <p class="order-meta"></p>
+        </div>
+        <div class="order-actions">
+          <span class="badge"></span>
+          <button class="btn btn-secondary advance-btn" type="button">Advance Status</button>
+        </div>
+      </li>
+    </template>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
